@@ -123,7 +123,7 @@ spec:
           - |
             {{- if .Values.consulAgent.gossipKeySecretName }}
             if [ -e /etc/consul/secrets/gossip-key ]; then
-              echo "{\"encrypt\": \"$(base64 /etc/consul/secrets/gossip-key)\"}" > /etc/consul/encrypt.json
+              echo "{\"encrypt\": \"$(cat /etc/consul/secrets/gossip-key)\"}" > /etc/consul/encrypt.json
               GOSSIP_KEY="-config-file /etc/consul/encrypt.json"
             fi
             {{- end }}
